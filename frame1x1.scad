@@ -11,7 +11,7 @@
 
 // These settings will move into a header file soon
 frame_outer = 35.0;
-wall_thickness = 0.9;
+wall_thickness = 0.48 * 3;
 frame_inner = frame_outer - 2*wall_thickness;
 
 module tab1x1() {
@@ -35,18 +35,18 @@ module frame1x1() {
   translate([0, 2*wall_thickness, 0])
     rotate([0, 0, 180])
     tab1x1();
-  translate([0, frame_outer - 2*wall_thickness, 0])
+  translate([0, frame_outer - wall_thickness, 0])
     rotate([0, 0, 180])
     tab1x1();
 
   translate([2*wall_thickness, frame_outer, 0])
     rotate([0, 0, 90])
     tab1x1();
-  translate([frame_outer - 2*wall_thickness, frame_outer, 0])
+  translate([frame_outer - wall_thickness, frame_outer, 0])
     rotate([0, 0, 90])
     tab1x1();
 
-  translate([2*wall_thickness, 0, 0])
+  translate([wall_thickness, 0, 0])
     rotate([0, 0, 270])
     tab1x1();
   translate([frame_outer - 2*wall_thickness, 0, 0])
