@@ -8,10 +8,7 @@
  */
 
 // These settings will move into a header file soon
-frame_outer = 35.0;
+frame_outer = 80.0;
 wall_thickness = 0.48 * 3;
 frame_inner = frame_outer - 2*wall_thickness;
 tolerance = 0.5;
-
-// The rest of the libraries
-include <lib/frame.scad>

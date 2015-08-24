@@ -10,9 +10,10 @@
  */
 
 include <configuration.scad>;
+include <lib/frame.scad>;
 
 difference() {
-  outer_frame();
+  whole_frame();
   translate([wall_thickness, wall_thickness, wall_thickness])
     cube([frame_inner, frame_inner, frame_outer]);
 }
