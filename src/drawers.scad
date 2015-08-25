@@ -8,15 +8,20 @@
  */
 
 include <configuration.scad>
-include <connectors.scad>
 
-module single_drawer() {
+module drawer(w, h) {
   difference() {
-    cube([UNIT_Z-WALL_THICKNESS, UNIT_Y, UNIT_X]);
+    union() {
+      cube([UNIT_Z - WALL_THICKNESS, UNIT_X * w, UNIT_Y * h]);
+      hull() {
+        translate([UNIT_Z - 2*WALL_THICKNESS, UNIT_X * w / 3, UNIT_Y * h / 2])
+          cube([WALL_THICKNESS, UNIT_X*w/3, WALL_THICKNESS]);
+        translate([UNIT_Z + 2*WALL_THICKNESS, UNIT_X * w / 3, UNIT_Y * h / 2 + 3*WALL_THICKNESS])
+          cube([WALL_THICKNESS, UNIT_X*w/3, WALL_THICKNESS]);
+      }
+    }
     translate([WALL_THICKNESS, WALL_THICKNESS, WALL_THICKNESS])
-      cube([UNIT_Z - 3*WALL_THICKNESS, UNIT_Y - 2*WALL_THICKNESS, UNIT_X]);
-    translate([UNIT_Z - WALL_THICKNESS, UNIT_Y/2, UNIT_X])
-      rotate([0, 270, 0])
-      cylinder(d=UNIT_X/2, h=WALL_THICKNESS);
+      cube([UNIT_Z - 3*WALL_THICKNESS, w*UNIT_Y - 2*WALL_THICKNESS, h*UNIT_X]);
   }
 }
+

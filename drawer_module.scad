@@ -17,4 +17,12 @@ include <src/units.scad>
 MODULE_WIDTH = 1;
 MODULE_HEIGHT = 1;
 
-unit(w=MODULE_WIDTH, h=MODULE_HEIGHT);
+GENERATE_UNIT = 0;
+GENERATE_DRAWER = 0;
+
+if (GENERATE_UNIT == 1) {
+  unit(w=MODULE_WIDTH, h=MODULE_HEIGHT);
+}
+if (GENERATE_DRAWER == 1) {
+  drawer(w=MODULE_WIDTH, h=MODULE_HEIGHT);
+}
