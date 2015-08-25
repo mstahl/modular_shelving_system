@@ -14,4 +14,7 @@ include <src/connectors.scad>
 include <src/drawers.scad>
 include <src/units.scad>
 
-unit(w=1, h=3);
+MODULE_WIDTH = 1;
+MODULE_HEIGHT = 1;
+
+unit(w=MODULE_WIDTH, h=MODULE_HEIGHT);
