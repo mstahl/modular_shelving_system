@@ -17,7 +17,7 @@ include <src/units.scad>
 MODULE_WIDTH = 1;
 MODULE_HEIGHT = 1;
 
-GENERATE_UNIT = 0;
+GENERATE_UNIT = 1;
 GENERATE_DRAWER = 0;
 
 if (GENERATE_UNIT == 1) {

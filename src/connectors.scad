@@ -33,5 +33,5 @@ module connector_female() {
 
 module connector_male() {
   scale([-1,1,1])
-    connector(GROOVE_W_TOP - WALL_THICKNESS - 0.1, GROOVE_W_BOTTOM - WALL_THICKNESS - 0.1, GROOVE_DEPTH);
+    connector(GROOVE_W_TOP - 2*WALL_THICKNESS - 0.1, GROOVE_W_BOTTOM - 2*WALL_THICKNESS - 0.1, GROOVE_DEPTH);
 }

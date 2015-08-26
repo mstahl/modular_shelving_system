@@ -13,8 +13,6 @@ module unit(w, h) {
   difference() {
     cube([UNIT_X * w, UNIT_Y * h, UNIT_Z]);
     translate([WALL_THICKNESS, WALL_THICKNESS, WALL_THICKNESS])
-      cube([UNIT_X - WALL_THICKNESS - 2*drawer_gap, UNIT_Y - WALL_THICKNESS - 2*drawer_gap, UNIT_Z]);
-    translate([WALL_THICKNESS, WALL_THICKNESS, WALL_THICKNESS])
       cube([w*UNIT_X - 2*WALL_THICKNESS, h*UNIT_Y - 2*WALL_THICKNESS, UNIT_Z]);
   }
   for(i = [0:w-1]) {
