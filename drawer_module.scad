@@ -12,6 +12,7 @@
 include <src/configuration.scad>
 include <src/connectors.scad>
 include <src/drawers.scad>
+include <src/drawer_dividers.scad>
 include <src/units.scad>
 
 MODULE_WIDTH = 1;

@@ -1,3 +1,14 @@
+/*
+ * connectors.scad
+ *
+ * Part of the Modular Drawer System.
+ *
+ * (c) 2015 max thom stahl. Released under the Creative Commons Share-Alike
+ * license. See LICENSE for details.
+ */
+
+include <configuration.scad>
+
 module connector(w_top, w_bottom) {
   difference() {
     polyhedron(points=[
@@ -33,5 +44,5 @@ module connector_female() {
 
 module connector_male() {
   scale([-1,1,1])
-    connector(GROOVE_W_TOP - 2*WALL_THICKNESS - 0.1, GROOVE_W_BOTTOM - 2*WALL_THICKNESS - 0.1, GROOVE_DEPTH);
+    connector(GROOVE_W_TOP - 2*WALL_THICKNESS - 0.5, GROOVE_W_BOTTOM - 2*WALL_THICKNESS - 0.5, GROOVE_DEPTH);
 }

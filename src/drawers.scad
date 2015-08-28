@@ -12,16 +12,26 @@ include <configuration.scad>
 module drawer(w, h) {
   difference() {
     union() {
-      cube([UNIT_Z - WALL_THICKNESS, UNIT_X * w, UNIT_Y * h]);
+      cube([
+        UNIT_Z - WALL_THICKNESS - LIP,
+        UNIT_X * w - 2*WALL_THICKNESS - DRAWER_GAP,
+        UNIT_Y * h - 2*WALL_THICKNESS - DRAWER_GAP - LIP
+      ]);
       hull() {
-        translate([UNIT_Z - 2*WALL_THICKNESS, UNIT_X * w / 3, UNIT_Y * h / 2])
-          cube([WALL_THICKNESS, UNIT_X*w/3, WALL_THICKNESS]);
-        translate([UNIT_Z + 2*WALL_THICKNESS, UNIT_X * w / 3, UNIT_Y * h / 2 + 3*WALL_THICKNESS])
-          cube([WALL_THICKNESS, UNIT_X*w/3, WALL_THICKNESS]);
+        translate([UNIT_Z - 2*WALL_THICKNESS, 2*UNIT_X * w / 3, UNIT_Y * h / 2])
+          rotate([90, 0, 0])
+          cylinder(d=WALL_THICKNESS, h=UNIT_X*w/3, $fn=100);
+        translate([UNIT_Z + 2*WALL_THICKNESS, 2*UNIT_X * w / 3, UNIT_Y * h / 2 + 3*WALL_THICKNESS])
+          rotate([90, 0, 0])
+          cylinder(d=WALL_THICKNESS, h=UNIT_X*w/3, $fn=100);
       }
     }
     translate([WALL_THICKNESS, WALL_THICKNESS, WALL_THICKNESS])
-      cube([UNIT_Z - 3*WALL_THICKNESS, w*UNIT_Y - 2*WALL_THICKNESS, h*UNIT_X]);
+      cube([
+        UNIT_Z - 3*WALL_THICKNESS - LIP,
+        UNIT_X*w - 4*WALL_THICKNESS - DRAWER_GAP,
+        h*UNIT_Y - 2*WALL_THICKNESS - LIP - DRAWER_GAP
+      ]);
   }
 }
 
