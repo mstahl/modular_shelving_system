@@ -31,4 +31,6 @@ module unit(w, h) {
       rotate([0,0,180])
       connector_male();
   }
+  // Lip
+  lip();
 }

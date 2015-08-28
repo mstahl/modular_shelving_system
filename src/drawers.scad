@@ -35,3 +35,12 @@ module drawer(w, h) {
   }
 }
 
+module lip() {
+  translate([WALL_THICKNESS, WALL_THICKNESS, UNIT_Z])
+    polyhedron(points=[
+      [0,0,-LIP], [0,0,0], [0,LIP,0],
+      [UNIT_X-2*WALL_THICKNESS,0,-LIP], [UNIT_X-2*WALL_THICKNESS,0,0], [UNIT_X-2*WALL_THICKNESS,LIP,0]
+    ], faces=[
+      [1,4,3,0], [2,5,4,1], [5,2,0,3], [4,5,3], [2,1,0]
+    ]);
+}
