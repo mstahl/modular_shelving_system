@@ -13,34 +13,39 @@ module drawer(w, h) {
   difference() {
     union() {
       cube([
-        UNIT_Z - WALL_THICKNESS - LIP,
+        UNIT_Z - WALL_THICKNESS,
         UNIT_X * w - 2*WALL_THICKNESS - DRAWER_GAP,
         UNIT_Y * h - 2*WALL_THICKNESS - DRAWER_GAP - LIP
       ]);
       hull() {
-        translate([UNIT_Z - 2*WALL_THICKNESS, 2*UNIT_X * w / 3, UNIT_Y * h / 2])
+        translate([UNIT_Z - 2*WALL_THICKNESS, 2*UNIT_X * w / 3 - WALL_THICKNESS, UNIT_Y * h / 4])
           rotate([90, 0, 0])
           cylinder(d=WALL_THICKNESS, h=UNIT_X*w/3, $fn=100);
-        translate([UNIT_Z + 2*WALL_THICKNESS, 2*UNIT_X * w / 3, UNIT_Y * h / 2 + 3*WALL_THICKNESS])
+        translate([UNIT_Z + 2*WALL_THICKNESS, 2*UNIT_X * w / 3 - WALL_THICKNESS, UNIT_Y * h / 4 + 3*WALL_THICKNESS])
           rotate([90, 0, 0])
           cylinder(d=WALL_THICKNESS, h=UNIT_X*w/3, $fn=100);
       }
     }
-    translate([WALL_THICKNESS, WALL_THICKNESS, WALL_THICKNESS])
+    translate([DRAWER_WALL_THICKNESS, DRAWER_WALL_THICKNESS, DRAWER_WALL_THICKNESS])
       cube([
-        UNIT_Z - 3*WALL_THICKNESS - LIP,
-        UNIT_X*w - 4*WALL_THICKNESS - DRAWER_GAP,
+        UNIT_Z - WALL_THICKNESS - LIP - DRAWER_WALL_THICKNESS,
+        UNIT_X*w - 2*WALL_THICKNESS - DRAWER_GAP - 2*DRAWER_WALL_THICKNESS,
         h*UNIT_Y - 2*WALL_THICKNESS - LIP - DRAWER_GAP
       ]);
+    translate([UNIT_Z - WALL_THICKNESS, 0, 0])
+      rotate([180, 0, 90])
+      scale([1,-1,1])
+      lip();
   }
 }
 
-module lip() {
-  translate([WALL_THICKNESS, WALL_THICKNESS, UNIT_Z])
-    polyhedron(points=[
-      [0,0,-LIP], [0,0,0], [0,LIP,0],
-      [UNIT_X-2*WALL_THICKNESS,0,-LIP], [UNIT_X-2*WALL_THICKNESS,0,0], [UNIT_X-2*WALL_THICKNESS,LIP,0]
-    ], faces=[
-      [1,4,3,0], [2,5,4,1], [5,2,0,3], [4,5,3], [2,1,0]
-    ]);
+module lip(w) {
+  polyhedron(points=[
+    [0,0,-LIP], [0,0,0], [0,LIP,0],
+    [(UNIT_X + GROOVE_DEPTH)*w-2*WALL_THICKNESS-GROOVE_DEPTH,0,-LIP],
+    [(UNIT_X + GROOVE_DEPTH)*w-2*WALL_THICKNESS-GROOVE_DEPTH,0,0],
+    [(UNIT_X + GROOVE_DEPTH)*w-2*WALL_THICKNESS-GROOVE_DEPTH,LIP,0]
+  ], faces=[
+    [1,4,3,0], [2,5,4,1], [5,2,0,3], [4,5,3], [2,1,0]
+  ]);
 }

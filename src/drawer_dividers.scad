@@ -23,7 +23,7 @@ module divider_slot() {
   }
 }
 
-module dividier(size) {
+module divider(size) {
 }
 
 /* !divider_slot(); */

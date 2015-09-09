@@ -2,7 +2,7 @@
 
 puts "+--> Building all the things:"
 puts "     Building modules"
-(1..4).each do |width|
+(1..2).each do |width|
   (1..width).each do |height|
     puts "     Building #{width}x#{height} module..."
     `/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD \
@@ -15,9 +15,9 @@ puts "     Building modules"
       -o ./build/module-#{width}x#{height}.stl`
   end
 end
-puts "     Building drawers"
-(1..4).each do |width|
-  (1..4).each do |height|
+puts "+--> Building drawers"
+(1..2).each do |width|
+  (1..2).each do |height|
     puts "     Building #{width}x#{height} drawer..."
     `/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD \
       ./drawer_module.scad \

@@ -22,6 +22,7 @@ WALL_THICKNESS = calculated_extrusion_width * 3;
 
 DRAWER_GAP = 0.5;
 LIP = 1.0;
+DRAWER_WALL_THICKNESS = 2*calculated_extrusion_width;
 
 //--[ Drawer dividers ]---------------------------------------------------------
 
